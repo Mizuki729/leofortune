@@ -8,7 +8,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 twische = BlockingScheduler()
 
-@twische.scheduled_job('interval', minutes=10)
+@twische.scheduled_job('interval', minutes=360)
 def main():
     Leo = Content.FortuneTelling("leo")
     LeoTweet = Twitter_util.TwitterUtil()
