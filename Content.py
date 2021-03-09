@@ -48,26 +48,40 @@ class FortuneTelling(object):
                 stars += "☆"
         return stars
 
+    
+    def arrangeText(self, text):
+        if len(text)>140:
+            self.text = text[0:140]
+            self.text = self.text[0:self.text.rfind("。")+1]
+        else:
+            self.text = text
+        return self.text
 
     def LoveText(self):
         dt_now = datetime.datetime.now()
-        return str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁\n恋愛運　" + self.CountStar(self.lovePoint) + "\n\n" + self.loveDetail
+        self.lovetext =  str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁\n恋愛運　" + self.CountStar(self.lovePoint) + "\n\n" + self.loveDetail
+        return self.arrangeText(self.lovetext)
 
 
     def MoneyText(self):
         dt_now = datetime.datetime.now()
-        return str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁\n金運　　" + self.CountStar(self.moneyPoint) + "\n\n" + self.moneyDetail
-        
+        self.moneytext = str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁\n金運　　" + self.CountStar(self.moneyPoint) + "\n\n" + self.moneyDetail
+        return self.arrangeText(self.moneytext)
+
+
     def WorkText(self):
         dt_now = datetime.datetime.now()
-        return str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁\n仕事運　" + self.CountStar(self.workPoint) + "\n\n" + self.workDetail
-    
+        self.worktext = str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁\n仕事運　" + self.CountStar(self.workPoint) + "\n\n" + self.workDetail
+        return self.arrangeText(self.worktext)
+
 
     def TotalText(self):
         dt_now = datetime.datetime.now()
-        return str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁\n総合運　　" + self.CountStar(self.totalPoint) + "\n\n" + self.totalDetail
-                
+        self.totaltext = str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁\n総合運　　" + self.CountStar(self.totalPoint) + "\n\n" + self.totalDetail
+        return self.arrangeText(self.totaltext)     
+
+
     def Text(self):
         dt_now = datetime.datetime.now()
-        
-        return  str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁の順位は" + self.rank + '!\n\n' + self.totalSummary + "\n" + "総合運　" + self.CountStar(self.totalPoint) + "\n" + "恋愛運　" + self.CountStar(self.lovePoint) + "\n" + "金運　　" + self.CountStar(self.moneyPoint) + "\n" + "仕事運　" + self.CountStar(self.workPoint) + "\n\n" + "開運のおまじない\n" + self.act
+        self.summarytext = str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁の順位は" + self.rank + '!\n\n' + self.totalSummary + "\n" + "総合運　" + self.CountStar(self.totalPoint) + "\n" + "恋愛運　" + self.CountStar(self.lovePoint) + "\n" + "金運　　" + self.CountStar(self.moneyPoint) + "\n" + "仕事運　" + self.CountStar(self.workPoint) + "\n\n" + "開運のおまじない\n" + self.act
+        return self.arrangeText(self.summarytext)
