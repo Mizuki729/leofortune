@@ -26,7 +26,7 @@ class FortuneTelling(object):
         self.totalSummary = str(self.total[0].find('dt').text)  #一日の運勢の総括
         self.totalDetail = str(self.total[0].find('dd').text)  #一日の運勢詳細
         self.act = str(self.total[1].find('dd').text) #開運のおまじない
-        """
+        
         self.love = self.soup.find_all(id=re.compile('lnk02'))
         self.loveDetail = self.love[0].find('p').text  #恋愛運詳細
 
@@ -35,7 +35,7 @@ class FortuneTelling(object):
 
         self.work = self.soup.find_all(id=re.compile('lnk04'))
         self.workDetail = self.work[0].find('p').text  #仕事運詳細
-        """
+        
         
 
     def CountStar(self, point):
@@ -47,7 +47,25 @@ class FortuneTelling(object):
             else:
                 stars += "☆"
         return stars
+
+
+    def LoveText(self):
+        dt_now = datetime.datetime.now()
+        return str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁\n恋愛運　" + self.CountStar(self.lovePoint) + "\n\n" + self.loveDetail
+
+
+    def MoneyText(self):
+        dt_now = datetime.datetime.now()
+        return str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁\n金運　　" + self.CountStar(self.moneyPoint) + "\n\n" + self.moneyDetail
         
+    def WorkText(self):
+        dt_now = datetime.datetime.now()
+        return str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁\n仕事運　" + self.CountStar(self.workPoint) + "\n\n" + self.workDetail
+    
+
+    def TotalText(self):
+        dt_now = datetime.datetime.now()
+        return str(dt_now.month) + "月" + str(dt_now.day) + "日のしし座🦁\n総合運　　" + self.CountStar(self.totalPoint) + "\n\n" + self.totalDetail
                 
     def Text(self):
         dt_now = datetime.datetime.now()
