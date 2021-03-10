@@ -1,10 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-import datetime
 import Content
 import Twitter_util
 from apscheduler.schedulers.blocking import BlockingScheduler
+from datetime import datetime, timezone, timedelta
 
 def main():
     Leo = Content.FortuneTelling("leo")

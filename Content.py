@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import re
-import datetime
+from datetime import datetime, timezone, timedelta
 import requests
 
 
@@ -35,6 +35,8 @@ class FortuneTelling(object):
 
         self.work = self.soup.find_all(id=re.compile('lnk04'))
         self.workDetail = self.work[0].find('p').text  #仕事運詳細
+
+        self.JST = timezone(timedelta(hours=+9), 'JST')  #日本時間に合わせる
         
         
 
@@ -58,25 +60,25 @@ class FortuneTelling(object):
         return self.text
 
     def LoveText(self):
-        self.dt_now = datetime.datetime.now()
+        self.dt_now = datetime.datetime.now(self.JST)
         self.lovetext =  str(self.dt_now.month) + "月" + str(self.dt_now.day) + "日のしし座🦁\n恋愛運　" + self.CountStar(self.lovePoint) + "\n\n" + self.loveDetail
         return self.arrangeText(self.lovetext)
 
 
     def MoneyText(self):
-        self.dt_now = datetime.datetime.now()
+        self.dt_now = datetime.datetime.now(self.JST)
         self.moneytext = str(self.dt_now.month) + "月" + str(self.dt_now.day) + "日のしし座🦁\n金運　　" + self.CountStar(self.moneyPoint) + "\n\n" + self.moneyDetail
         return self.arrangeText(self.moneytext)
 
 
     def WorkText(self):
-        self.dt_now = datetime.datetime.now()
+        self.dt_now = datetime.datetime.now(self.JST)
         self.worktext = str(self.dt_now.month) + "月" + str(self.dt_now.day) + "日のしし座🦁\n仕事運　" + self.CountStar(self.workPoint) + "\n\n" + self.workDetail
         return self.arrangeText(self.worktext)
 
 
     def TotalText(self):
-        self.dt_now = datetime.datetime.now()
+        self.dt_now = datetime.datetime.now(self.JST)
         self.totaltext = str(self.dt_now.month) + "月" + str(self.dt_now.day) + "日のしし座🦁\n総合運　　" + self.CountStar(self.totalPoint) + "\n\n" + self.totalDetail
         return self.arrangeText(self.totaltext)     
 
