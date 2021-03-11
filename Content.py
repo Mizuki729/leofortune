@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import re
 from datetime import datetime, timezone, timedelta
 import requests
+import datetime
 
 
 class FortuneTelling(object):
