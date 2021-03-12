@@ -85,6 +85,6 @@ class FortuneTelling(object):
 
 
     def Text(self):
-        self.dt_now = datetime.datetime.now()
+        self.dt_now = datetime.datetime.now(self.JST)
         self.summarytext = str(self.dt_now.month) + "月" + str(self.dt_now.day) + "日のしし座🦁の順位は" + self.rank + '!\n\n' + self.totalSummary + "\n" + "総合運　" + self.CountStar(self.totalPoint) + "\n" + "恋愛運　" + self.CountStar(self.lovePoint) + "\n" + "金運　　" + self.CountStar(self.moneyPoint) + "\n" + "仕事運　" + self.CountStar(self.workPoint) + "\n\n" + "開運のおまじない\n" + self.act
         return self.arrangeText(self.summarytext)
